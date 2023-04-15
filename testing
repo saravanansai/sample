@@ -1,61 +1,50 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace task
+namespace HotelBooking
 {
-    class Attendance
+    class Program
     {
+        string Name;
+        int contactNo, number_of_rooms, number_of_days, guest_count;
         static void Main(string[] args)
         {
-            List<int> rollnumbers=new List<int>();
-            List<string> names=new List<string>();
-            int rollnumber=0,searchByRollNumber;
-            string name="",cont="";
-
-            do
-            {
-                Console.Write("Enter RollNumber: ");
-                rollnumber=Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter Name: ");
-                name= Console.ReadLine();
-                Console.WriteLine();
-                rollnumbers.Add(rollnumber);
-                names.Add(name);
-                Console.Write("Do you want to add another student details? ");
-                cont=Console.ReadLine();
-            }while(cont=="y");
-            for(int i=0;i<rollnumbers.Count();i++)
-            {
-                Console.WriteLine("Rollnumber={0}, Name={1}" , rollnumbers[i],names[i]);
-            }
-            if(cont=="n")
-            {
-                Console.Write("Please enter the roll number you want to search: ");
-                searchByRollNumber=Convert.ToInt32(Console.ReadLine());
-                
-               if(rollnumbers.Contains(searchByRollNumber))
-                {
-                    searchByRollNumber=searchByRollNumber-1;
-                    
-                    Console.WriteLine(rollnumbers.IndexOf(searchByRollNumber));
-                   
-                    Console.WriteLine(rollnumbers.ElementAt(searchByRollNumber));
-                    Console.WriteLine(names.ElementAt(searchByRollNumber));
-                    
-                }
-                else
-                {
-                    Console.WriteLine("sorry rollnumber not found");
-
-                }
-
-            }
+            Program pro = new Program();
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("Welcome to Hotel Booking");
+            Console.WriteLine("--------------------------");
+            pro.addGuestDetails();
+            
             Console.ReadLine();
+
+        }
+
+        public void addGuestDetails()
+        {
+            Program pro = new Program();
+            Console.Write("Enter you name: ");
+            pro.Name = Console.ReadLine();
+            Console.Write("phone number: ");
+            pro.contactNo = Convert.ToInt32(Console.ReadLine());
+            Console.Write("no.of days: ");
+            pro.number_of_days = Convert.ToInt32(Console.ReadLine());
+            Console.Write("no. of guests: ");
+            pro.guest_count = Convert.ToInt32(Console.ReadLine());
+            Console.Write("no. of rooms: ");
+            pro.number_of_rooms = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+        }
+        public int calculateInvoice(int num_of_rooms, int num_of_days)
+        {
+            number_of_rooms = num_of_rooms;
+            number_of_days = num_of_days;
+            int total_amount = num_of_rooms * num_of_days;
+            Console.WriteLine("total_amount is: ",total_amount);
+            return total_amount;
         }
     }
 }
